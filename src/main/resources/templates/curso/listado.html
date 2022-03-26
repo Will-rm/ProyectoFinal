@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>Poryecto Final</title>
+        <meta charset="UTF-8">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+         </head>
+    <body>
+        <header th:replace="layout/plantilla :: header" />
+    </head>
+    <body>
+        <h1>Lista de cursos</h1>
+        
+        <a th:href="@{/nuevoCurso}">Nuevo Curso</a>
+        <div th:if"${cursos != null and !cursos.empy}">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Detalle</th>
+                    <th>Precio</th>
+                    <th>cupos</th>
+                    <th>Activo</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="curso : ${cursos}">
+                    <td th:text="${curso.detalle}"></td>
+                    <td th:text="${curso.precio}"></td>
+                    <td th:text="${curso.cupos}"></td>
+                    <td th:text="${curso.activo}"></td>
+                    <td><a th:href="@{/curso/eliminar} + ${curso.idCurso}">Eliminar</a></td>
+                    <td><a th:href="@{/curso/modificar} + ${curso.idCurso}">Modificar</a></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        
+         <div th:if"${cursos != null or cursos.empy}">
+                 Por el moemnto no hay cursos que mostrar..
+             </div>
+         </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

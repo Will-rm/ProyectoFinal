@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmls="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>ProyectoFinal</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header" />
+        <div class"contenido">
+        <h1>Datos de los Cliente</h1>
+        
+        <a th:href="@{/}">Regresar</a>
+            
+            <form th:action="@{/cliente/guardar}"
+                  method="post"
+                  th:object="${cliente}">
+                <input type="hidden" name="idCliente" th:field="*{idCliente}"><>
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" th:field="*{nombre}"/>
+                <br/>
+                
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" name="apellidos" th:field="*{apellidos}"/>
+                <br/>
+                
+                <label for="correo">Correo:</label>
+                <input type="email" name="correo" th:field="*{correo}"/>
+                <br/>
+               
+                <label for="telefono">Telefono:</label>
+                <input type="tel" name="telefono" th:field="*{telefono}"/>
+                <br/>
+                <label for="limite">Limite:</label>
+                <input type="number" name="limite" th:field="*{credito.limite}"/>
+                
+                <input type="submit" name="guardar" value="Guardar"/>
+            </form> 
+        </div>
+        <footer th:replace="layout/planyila :: footer"/>
+    </body>
+</html>

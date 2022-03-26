@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmls="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Proyecto Final</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header" />
+        <div class"contenido">
+        <h1>Datos de los cursos</h1>
+        
+        <a th:href="@{/}">Regresar</a>
+            
+            <form th:action="@{/curso/guardar}"
+                  method="post"
+                  th:object="${curso}">
+                <input type="hidden" name="idCurso" th:field="*{idCurso}"><>
+                <input type="hidden" name="idCategoria" th:field="*{idCategoria}"><>
+                <label for="detalle">Detalle:</label>
+                <input type="text" name="detalle th:field="*{curso.detalle}"/>
+                <br/>
+                
+                <label for="precio">Precio:</label>
+                <input type="double" name="precio" th:field="*{curso.precio}"/>
+                <br/>
+                
+                <label for="existencias">Cupos:</label>
+                <input type="int" name="cupos" th:field="*{curso.cupos}"/>
+                <br/>
+               
+                <label for="activo">Activo:</label>
+                <input type="int" name="activo" th:field="*{curso.activo}"/>
+                <br/>
+                
+                <input type="submit" name="guardar" value="Guardar"/>
+            </form> 
+        </div>
+        <footer th:replace="layout/planyila :: footer"/>
+    </body>
+</html>

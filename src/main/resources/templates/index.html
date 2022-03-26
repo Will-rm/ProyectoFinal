@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>Proyecto Final</title>
+        <meta charset="UTF-8">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header" />
+        <div class="contenido">
+        <h2>Nuestros cursos</h2>
+        
+        <div th:if"${cursos != null and !cursos.empy}">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Inscribirse</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="curso : ${cursos}">
+                    <td th:text="${curso.descripcion}"></td>
+                    <td th:text="${cursos.precio}"></td>
+                    <td><a th:href="@{/carrito/agregar} + ${curso.idCurso}">Agregar</a></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        
+         <div th:if"${cursos != null or cursos.empy}">
+                 Por el moemento no hay cursos disponibles..
+             </div>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>
+
