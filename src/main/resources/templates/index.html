@@ -22,16 +22,16 @@
             </thead>
             <tbody>
                 <tr th:each="curso : ${cursos}">
-                    <td th:text="${curso.descripcion}"></td>
-                    <td th:text="${cursos.precio}"></td>
-                    <td><a th:href="@{/carrito/agregar} + ${curso.idCurso}">Agregar</a></td>
+                    <td th:text="${curso.detalle}"></td>
+                    <td th:text="${curso.precio}"></td>
+                    <td><a th:href="@{/carrito/agregar/} + ${curso.idCurso}">Agregar</a></td>
                 </tr>
             </tbody>
         </table>
         </div>
         
          <div th:if"${cursos != null or cursos.empy}">
-                 Por el moemento no hay cursos disponibles..
+                 Por el momento no hay cursos disponibles..
              </div>
         </div>
         <footer th:replace="layout/plantilla :: footer"/>
